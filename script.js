@@ -13,6 +13,8 @@ let answerThree = document.querySelector("#answer3");
 let answerFour = document.querySelector("#answer4");
 let isCorrect = document.querySelector("#isCorrect");
 let timeLeft = document.querySelector("#timer")
+let storedScores = JSON.parse(localStorage.getItem("storeScores"))
+
 
 let clickedAnswer = "";
 let questionNumber = 0;
@@ -35,7 +37,7 @@ quiz.addEventListener("click", function(event) {
         if (questionNumber < questions.length) {
         
             checkAnswer();
-            showQuiz();
+            nextQuestion();
         }   
 
         else {
@@ -45,25 +47,42 @@ quiz.addEventListener("click", function(event) {
     }
 })
 
-start.addEventListener("click", (showQuiz)); {
-    
-}
+button.addEventListener("click", function (event) {
+    event.preventDefault()
+    startQuiz()
+
+})
 
 
-function showQuiz() {
+
+
+function startQuiz() {
     
     document.getElementById("quiz").style.display = "block";
     document.getElementById("end").style.display = "none";
     document.getElementById("start").style.display = "none";
+    document.getElementById("button").style.display = "none";
 
     currentQuestion.textContent = questions[questionNumber].question
     answerOne.textContent = questions[questionNumber].answers[0]
     answerTwo.textContent = questions[questionNumber].answers[1]
     answerThree.textContent = questions[questionNumber].answers[2]
     answerFour.textContent = questions[questionNumber].answers[3]
+
+    setInterval(timer, 1000)
     };
 
-function checkAnswer() {
+function nextQuestion() {
+       
+        currentQuestion.textContent = questions[questionNumber].question
+        answerOne.textContent = questions[questionNumber].answers[0]
+        answerTwo.textContent = questions[questionNumber].answers[1]
+        answerThree.textContent = questions[questionNumber].answers[2]
+        answerFour.textContent = questions[questionNumber].answers[3]
+    
+    }
+
+    function checkAnswer() {
     if (clickedAnswer === questions[questionNumber-1].correctAnswer) {
         
         score += 20;
