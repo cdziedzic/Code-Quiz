@@ -1,0 +1,24 @@
+body {
+    margin: 0 10% 0 10%;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: none;
+    font-size: 16pt;
+    padding: 10pt
+}
+
+header a {
+text-decoration: none;
+color: pink
+}
+
+header p {
+text-align: right;
+
+
+}
