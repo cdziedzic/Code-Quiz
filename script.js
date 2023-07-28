@@ -23,13 +23,14 @@ answerFour.textContent = questions[questionNumber].answers[3]
 
 quiz.addEventListener("click", function(event) {
     if(event.target.matches("button")){
-        
-        showQuestion();
-
         clickedAnswer = event.target.innerText;
-
+        questionNumber++;
+        
+        
+        
+        
         checkAnswer();
-
+        showQuestion();
         
     }
 
@@ -37,7 +38,7 @@ quiz.addEventListener("click", function(event) {
 
 
 function checkAnswer() {
-    if (clickedAnswer === questions[questionNumber].correctAnswer) {
+    if (clickedAnswer === questions[questionNumber-1].correctAnswer) {
         
         isCorrect.textContent = "Correct!"
     }
