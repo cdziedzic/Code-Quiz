@@ -1,8 +1,8 @@
-let questions = [ {question: "commonly used data types do NOT include?", answers:["strings", "booleans", "alerts", "numbers"], correctAnswer: "alerts" }, 
-{question: "The condition in an if/else statement is enclosed with _______.", answers:["quotes", "curly brackets", "parenthesis", "square brackets"], correctAnswer: "parenthesis" },
-{question: "Arrays in JavaScript can be used to store ______.", answers: ["numbers and strings", "other arrays","booleans","all of the above"], correctAnswer: "all of the above" },
-{question: "String values must be enclodes within ______ when being assigned to variables.", answers:["commas","curly brackets","quotes","parenthesis"], correctAnswer: "quotes"},
-{question: "A very useful tool used during development and debugging for printing content to the debugger is:", answers: ["JavaScript","terminal","for loops","console.log"], correctAnswer: "console.log"} ];
+let questions = [ {question: "1. commonly used data types do NOT include?", answers:["strings", "booleans", "alerts", "numbers"], correctAnswer: "alerts" }, 
+{question: "2. The condition in an if/else statement is enclosed with _______.", answers:["quotes", "curly brackets", "parenthesis", "square brackets"], correctAnswer: "parenthesis" },
+{question: "3. Arrays in JavaScript can be used to store ______.", answers: ["numbers and strings", "other arrays","booleans","all of the above"], correctAnswer: "all of the above" },
+{question: "4. String values must be enclosed within ______ when being assigned to variables.", answers:["commas","curly brackets","quotes","parenthesis"], correctAnswer: "quotes"},
+{question: "5. A very useful tool used during development and debugging for printing content to the debugger is:", answers: ["JavaScript","terminal","for loops","console.log"], correctAnswer: "console.log"} ];
 
 
 let quiz = document.querySelector("#quiz");
@@ -27,11 +27,11 @@ function showHome() {
 quiz.addEventListener("click", function(event) {
     if(event.target.matches("button")){
         clickedAnswer = event.target.innerText;
+            questionNumber++;
         
         if (questionNumber < questions.length) {
-            questionNumber++;
-            
-            nextQuestion();
+        
+            showQuiz();
             checkAnswer();
         }   
 
@@ -43,6 +43,7 @@ quiz.addEventListener("click", function(event) {
 })
 
 start.addEventListener("click", (showQuiz))
+
 
 function showQuiz() {
     
@@ -57,14 +58,6 @@ function showQuiz() {
     answerFour.textContent = questions[questionNumber].answers[3]
     };
 
-function nextQuestion() {
-    currentQuestion.textContent = questions[questionNumber].question
-    answerOne.textContent = questions[questionNumber].answers[0]
-    answerTwo.textContent = questions[questionNumber].answers[1]
-    answerThree.textContent = questions[questionNumber].answers[2]
-    answerFour.textContent = questions[questionNumber].answers[3]
-}
-
 function checkAnswer() {
     if (clickedAnswer === questions[questionNumber-1].correctAnswer) {
         
@@ -77,7 +70,13 @@ function checkAnswer() {
     }
 };
 
-function endQuiz() {};
+function endQuiz() {
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("end").style.display = "block";
+    document.getElementById("start").style.display = "none";
+
+    document.querySelector("#score").textContent = "Your Score was " + score + "."
+};
 
 
 showHome();
