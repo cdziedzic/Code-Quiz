@@ -1,4 +1,10 @@
-let questions = [ {question: "commonly used data types do NOT include?", answers:["strings", "booleans", "alerts", "numbers"], correctAnswer: "alerts" }, ] 
+let questions = [ {question: "commonly used data types do NOT include?", answers:["strings", "booleans", "alerts", "numbers"], correctAnswer: "alerts" }, 
+{question: "The condition in an if/else statement is enclosed with _______.", answers:["quotes", "curly brackets", "parenthesis", "square brackets"], correctAnswer: "parenthesis" },
+{question: "Arrays in JavaScript can be used to store ______.", answers: ["numbers and strings", "other arrays","booleans","all of the above"], correctAnswer: "all of the above" },
+{question: "String values must be enclodes within ______ when being assigned to variables.", answers:["commas","curly brackets","quotes","parenthesis"], correctAnswer = "quotes"},
+{question: "A very useful tool used during development and debugging for printing content to the debugger is:", answers: ["JavaScript","terminal","for loops","console.log"], correctAnswer: "console.log"} ]
+
+
 let quiz = document.querySelector("#quiz");
 let currentQuestion = document.querySelector("#question");
 let answerOne = document.querySelector("#answer1")
@@ -9,6 +15,8 @@ let isCorrect = document.querySelector("#isCorrect")
 let clickedAnswer = "";
 
 let questionNumber =0;
+let score = 0;
+let time = 100;
 
 function showQuestion() {
 
@@ -41,9 +49,11 @@ function checkAnswer() {
     if (clickedAnswer === questions[questionNumber-1].correctAnswer) {
         
         isCorrect.textContent = "Correct!"
+        score+20;
     }
     else {
         isCorrect.textContent = "Incorrect!"
+        time-5;
     }
 }
 
