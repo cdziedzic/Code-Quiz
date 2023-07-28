@@ -12,8 +12,9 @@ let answerTwo = document.querySelector("#answer2");
 let answerThree = document.querySelector("#answer3");
 let answerFour = document.querySelector("#answer4");
 let isCorrect = document.querySelector("#isCorrect");
-let clickedAnswer = "";
+let timeLeft = document.querySelector("#timer")
 
+let clickedAnswer = "";
 let questionNumber = 0;
 let score = 0;
 let time = 100;
@@ -22,6 +23,8 @@ function showHome() {
     document.getElementById("start").style.display = "block";
     document.getElementById("quiz").style.display = "none";
     document.getElementById("end").style.display = "none";
+    timeLeft.textContent = "Time left= " + time + "seconds"
+
 }
 
 quiz.addEventListener("click", function(event) {
@@ -31,8 +34,8 @@ quiz.addEventListener("click", function(event) {
         
         if (questionNumber < questions.length) {
         
-            showQuiz();
             checkAnswer();
+            showQuiz();
         }   
 
         else {
@@ -42,7 +45,9 @@ quiz.addEventListener("click", function(event) {
     }
 })
 
-start.addEventListener("click", (showQuiz))
+start.addEventListener("click", (showQuiz)); {
+    
+}
 
 
 function showQuiz() {
@@ -61,12 +66,13 @@ function showQuiz() {
 function checkAnswer() {
     if (clickedAnswer === questions[questionNumber-1].correctAnswer) {
         
-        isCorrect.textContent = "Correct!"
-        score+20;
+        score += 20;
+        isCorrect.textContent = "Correct!";
     }
+    
     else {
-        isCorrect.textContent = "Incorrect!"
-        time-5;
+        isCorrect.textContent = "Incorrect!";
+        time -= 5;
     }
 };
 
@@ -78,5 +84,12 @@ function endQuiz() {
     document.querySelector("#score").textContent = "Your Score was " + score + "."
 };
 
+function timer() {
+    timeLeft.textContent = "Time left= " + time + "seconds"
+    time--
+}
 
 showHome();
+
+
+
