@@ -13,6 +13,7 @@ let answerThree = document.querySelector("#answer3");
 let answerFour = document.querySelector("#answer4");
 let isCorrect = document.querySelector("#isCorrect");
 let timeLeft = document.querySelector("#timer")
+let timerId = setInterval(timer, 1000)
 let storedScores = JSON.parse(localStorage.getItem("storeScores"))
 
 
@@ -69,9 +70,15 @@ function startQuiz() {
     answerThree.textContent = questions[questionNumber].answers[2]
     answerFour.textContent = questions[questionNumber].answers[3]
 
-    setInterval(timer, 1000)
+    timerId
     };
 
+
+function timer() {
+        timeLeft.textContent = "Time left= " + time + "seconds"
+        time--
+    }
+    
 function nextQuestion() {
        
         currentQuestion.textContent = questions[questionNumber].question
@@ -92,6 +99,7 @@ function nextQuestion() {
     else {
         isCorrect.textContent = "Incorrect!";
         time -= 5;
+        timeLeft.textContent = "Time left= " + time + "seconds"
     }
 };
 
@@ -101,11 +109,11 @@ function endQuiz() {
     document.getElementById("start").style.display = "none";
 
     document.querySelector("#score").textContent = "Your Score was " + score + "."
+    clearInterval(timerId)
 };
 
-function timer() {
-    timeLeft.textContent = "Time left= " + time + "seconds"
-    time--
+function storeData() {
+    localStorage.setItem ("highScores", JSON.stringify(["initials","score" ]))
 }
 
 showHome();
