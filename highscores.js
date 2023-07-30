@@ -13,9 +13,9 @@ function populateScore() {
 
 }
 
-
-goBack.addEventListener("click",function (event) {
+clear.addEventListener("click",function (event) {
     event.preventDefault()
-    window.location="./index.html"
+    localStorage.clear()
+    document.getElementById("score-list").style.display = "none"
 
 })
