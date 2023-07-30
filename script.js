@@ -13,9 +13,9 @@ let answerThree = document.querySelector("#answer3");
 let answerFour = document.querySelector("#answer4");
 let isCorrect = document.querySelector("#isCorrect");
 let timeLeft = document.querySelector("#timer")
-let timerId = setInterval(timer, 1000)
-let storedScores = JSON.parse(localStorage.getItem("storeScores"))
 
+
+let highScores = JSON.parse(localStorage.getItem("highScores")) || []
 
 let clickedAnswer = "";
 let questionNumber = 0;
@@ -48,27 +48,41 @@ quiz.addEventListener("click", function(event) {
     }
 })
 
-button.addEventListener("click", function (event) {
+startButton.addEventListener("click", function (event) {
     event.preventDefault()
     startQuiz()
 
 })
 
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault()
+    saveScores()
+    window.location="highscores.html"
+    
+})
+
+tryAgain.addEventListener("click", function(event) {
+    event.preventDefault()
+    location.reload()
 
 
+})
 
 function startQuiz() {
     
     document.getElementById("quiz").style.display = "block";
     document.getElementById("end").style.display = "none";
     document.getElementById("start").style.display = "none";
-    document.getElementById("button").style.display = "none";
+    document.getElementById("startButton").style.display = "none";
+    document.getElementById("submitButton").style.display = "flex";
 
     currentQuestion.textContent = questions[questionNumber].question
     answerOne.textContent = questions[questionNumber].answers[0]
     answerTwo.textContent = questions[questionNumber].answers[1]
     answerThree.textContent = questions[questionNumber].answers[2]
     answerFour.textContent = questions[questionNumber].answers[3]
+
+    let timerId = setInterval(timer, 1000)
 
     timerId
     };
@@ -107,16 +121,18 @@ function endQuiz() {
     document.getElementById("quiz").style.display = "none";
     document.getElementById("end").style.display = "block";
     document.getElementById("start").style.display = "none";
+    document.getElementById("submitButton").style.display = "block";
 
     document.querySelector("#score").textContent = "Your Score was " + score + "."
     clearInterval(timerId)
+    timeLeft.textContent = "Time left= " + time + "seconds"
 };
 
-function storeData() {
-    localStorage.setItem ("highScores", JSON.stringify(["initials","score" ]))
+function saveScores() {
+    let initials = prompt("enter your initials")
+    localStorage.setItem ("highScores", JSON.stringify([{initials,score}]))
 }
 
 showHome();
-
 
 
