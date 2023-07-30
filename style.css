@@ -1,3 +1,7 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
     margin: 0 10% 0 10%;
     padding: 0;
@@ -14,11 +18,47 @@ header {
 
 header a {
 text-decoration: none;
-color: pink
+color: rgb(219, 18, 51)
 }
 
 header p {
 text-align: right;
+}
 
+.intro {
+    display: block;
+    padding: 5% 20% 5% 20%;
+    background-color: lightgray;
+    border: solid black 1px;
+
+}
+
+.intro h1 {
+text-align: center;
+}
+
+.intro p {
+    text-align: center;
+    padding: 1%;
+}
+
+
+
+
+
+button {
+    display: block;
+    background-color: rgb(73, 7, 228);
+    margin: auto;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    width: 40%;
+    text-align: center;
+}
+
+button:hover {
+    background-color: rgb(18, 182, 174);
+    cursor:pointer;
 
 }

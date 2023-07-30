@@ -19,3 +19,10 @@ clear.addEventListener("click",function (event) {
     document.getElementById("score-list").style.display = "none"
 
 })
+
+goBack.addEventListener("click", function(event) {
+    event.preventDefault()
+    window.location="index.html"
+
+
+})
