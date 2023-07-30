@@ -1,4 +1,4 @@
-let questions = [ {question: "1. commonly used data types do NOT include?", answers:["strings", "booleans", "alerts", "numbers"], correctAnswer: "alerts" }, 
+let questions = [ {question: "1. Commonly used data types do NOT include?", answers:["strings", "booleans", "alerts", "numbers"], correctAnswer: "alerts" }, 
 {question: "2. The condition in an if/else statement is enclosed with _______.", answers:["quotes", "curly brackets", "parenthesis", "square brackets"], correctAnswer: "parenthesis" },
 {question: "3. Arrays in JavaScript can be used to store ______.", answers: ["numbers and strings", "other arrays","booleans","all of the above"], correctAnswer: "all of the above" },
 {question: "4. String values must be enclosed within ______ when being assigned to variables.", answers:["commas","curly brackets","quotes","parenthesis"], correctAnswer: "quotes"},
@@ -13,6 +13,7 @@ let answerThree = document.querySelector("#answer3");
 let answerFour = document.querySelector("#answer4");
 let isCorrect = document.querySelector("#isCorrect");
 let timeLeft = document.querySelector("#timer")
+
 
 
 
@@ -73,8 +74,6 @@ function startQuiz() {
     document.getElementById("quiz").style.display = "block";
     document.getElementById("end").style.display = "none";
     document.getElementById("start").style.display = "none";
-    document.getElementById("startButton").style.display = "none";
-    document.getElementById("submitButton").style.display = "flex";
 
     currentQuestion.textContent = questions[questionNumber].question
     answerOne.textContent = questions[questionNumber].answers[0]
@@ -89,8 +88,15 @@ function startQuiz() {
 
 
 function timer() {
-        timeLeft.textContent = "Time left= " + time + "seconds"
+        if (time >= 0) {
+            timeLeft.textContent = "Time left= " + time + "seconds"
         time--
+        }
+
+        else
+        endQuiz();
+    
+        
     }
     
 function nextQuestion() {
@@ -121,8 +127,6 @@ function endQuiz() {
     document.getElementById("quiz").style.display = "none";
     document.getElementById("end").style.display = "block";
     document.getElementById("start").style.display = "none";
-    document.getElementById("submitButton").style.display = "block";
-
     document.querySelector("#score").textContent = "Your Score was " + score + "."
     clearInterval(timerId)
     timeLeft.textContent = "Time left= " + time + "seconds"

@@ -67,19 +67,11 @@ button:hover {
 
 }
 
-.finished {
-    display: flex;
-    flex-wrap: column;
-    flex-basis: 100%;
-}
-
-.finished button {
-    background-color: rgb(73, 7, 228);
-    color: white;
-    font-size: 14pt;
-    min-height: 40px;
-    border-radius: 15px;
-    margin: 1%;
-    text-align: center;
-    min-width: 20%;
+ul {
+    margin-left: 1%;
+    margin-right: 19%;
+    background-color: rgba(73, 7, 228, 0.377);
+    color:black;
+    padding: .5%;
+    list-style-type: none;
 }
