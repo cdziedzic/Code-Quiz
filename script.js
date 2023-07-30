@@ -15,7 +15,7 @@ let isCorrect = document.querySelector("#isCorrect");
 let timeLeft = document.querySelector("#timer")
 
 
-let highScores = JSON.parse(localStorage.getItem("highScores")) || []
+
 
 let clickedAnswer = "";
 let questionNumber = 0;
