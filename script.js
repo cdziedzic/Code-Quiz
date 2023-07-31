@@ -12,7 +12,7 @@ let answerTwo = document.querySelector("#answer2");
 let answerThree = document.querySelector("#answer3");
 let answerFour = document.querySelector("#answer4");
 let isCorrect = document.querySelector("#isCorrect");
-let timeEl = document.querySelector("#timer")
+let timeEl= document.querySelector("#timer")
 
 
 
@@ -23,13 +23,13 @@ let clickedAnswer = "";
 let questionNumber = 0;
 let score = 0;
 let time;
-let timeLeft;
+let timeLeft= 100;
 
 function showHome() {
     document.getElementById("start").style.display = "block";
     document.getElementById("quiz").style.display = "none";
     document.getElementById("end").style.display = "none";
-    timeEl.textContent = "Time left= " + time + "seconds"
+    timeEl.textContent = timeLeft  +  " seconds"
 
 }
 
@@ -122,8 +122,8 @@ function nextQuestion() {
     
     else {
         isCorrect.textContent = "Incorrect!";
-        time -= 5;
-        timeEl.textContent = "Time left= " + time + "seconds"
+        timeLeft -= 5;
+        timeEl.textContent = timeLeft  +  " seconds"
     }
 };
 
@@ -132,13 +132,15 @@ function endQuiz() {
     document.getElementById("end").style.display = "block";
     document.getElementById("start").style.display = "none";
     document.querySelector("#score").textContent = "Your Score was " + score + "."
-    timeEl.textContent = "Time left= " + time + "seconds"
+    timeEl.textContent = timeLeft  +  " seconds"
 
 };
 
 function saveScores() {
-    let initials = prompt("enter your initials")
-    localStorage.setItem ("highScores", JSON.stringify([{initials,score}]))
+    let initials = document.getElementById("initials").value
+    localStorage.setItem("initials", initials)
+    localStorage.setItem("score", score)
+   
 }
 
 showHome();
