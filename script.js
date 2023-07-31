@@ -14,17 +14,13 @@ let answerFour = document.querySelector("#answer4");
 let isCorrect = document.querySelector("#isCorrect");
 let timeEl= document.querySelector("#timer")
 
-
-
-
-
-
 let clickedAnswer = "";
 let questionNumber = 0;
 let score = 0;
 let time;
 let timeLeft= 100;
 
+showHome();
 function showHome() {
     document.getElementById("start").style.display = "block";
     document.getElementById("quiz").style.display = "none";
@@ -133,6 +129,7 @@ function endQuiz() {
     document.getElementById("start").style.display = "none";
     document.querySelector("#score").textContent = "Your Score was " + score + "."
     timeEl.textContent = timeLeft  +  " seconds"
+    isCorrect
 
 };
 
@@ -143,6 +140,5 @@ function saveScores() {
    
 }
 
-showHome();
 
 
