@@ -20,6 +20,7 @@ let score = 0;
 let time;
 let timeLeft= 100;
 
+// This renders the splash page of the quiz
 showHome();
 function showHome() {
     document.getElementById("start").style.display = "block";
@@ -29,6 +30,7 @@ function showHome() {
 
 }
 
+// function of each answer button in the quiz to proceed to the next question and check answer
 quiz.addEventListener("click", function(event) {
     if(event.target.matches("button")){
         clickedAnswer = event.target.innerText;
@@ -47,12 +49,14 @@ quiz.addEventListener("click", function(event) {
     }
 })
 
+// splash screen start button
 startButton.addEventListener("click", function (event) {
     event.preventDefault()
     startQuiz()
 
 })
 
+// end screen to submit scores and move to high score page
 submitButton.addEventListener("click", function(event) {
     event.preventDefault()
     saveScores()
@@ -60,6 +64,7 @@ submitButton.addEventListener("click", function(event) {
     
 })
 
+// try again button
 tryAgain.addEventListener("click", function(event) {
     event.preventDefault()
     location.reload()
@@ -67,18 +72,25 @@ tryAgain.addEventListener("click", function(event) {
 
 })
 
+
+// starts quiz 
 function startQuiz() {
     
+    // hides divs of start/end and displys quiz blocks
     document.getElementById("quiz").style.display = "block";
     document.getElementById("end").style.display = "none";
     document.getElementById("start").style.display = "none";
 
+    
+    // sets which question and answer to display
     currentQuestion.textContent = questions[questionNumber].question
     answerOne.textContent = questions[questionNumber].answers[0]
     answerTwo.textContent = questions[questionNumber].answers[1]
     answerThree.textContent = questions[questionNumber].answers[2]
     answerFour.textContent = questions[questionNumber].answers[3]
 
+    
+    // timer function and check if quiz needs to end
     timeLeft = 100
     time = setInterval(function() {
         timeLeft--;
@@ -99,6 +111,7 @@ function startQuiz() {
     }, 1000) 
     };
     
+    //re-renders question when the question is changed
 function nextQuestion() {
        
         currentQuestion.textContent = questions[questionNumber].question
@@ -108,7 +121,7 @@ function nextQuestion() {
         answerFour.textContent = questions[questionNumber].answers[3]
     
     }
-
+// Checks if correct or incorrect and adds to score or subtracts time bsaed upon the result
     function checkAnswer() {
     if (clickedAnswer === questions[questionNumber-1].correctAnswer) {
         
@@ -123,6 +136,7 @@ function nextQuestion() {
     }
 };
 
+// hides start/quiz screen and displays end screen
 function endQuiz() {
     document.getElementById("quiz").style.display = "none";
     document.getElementById("end").style.display = "block";
@@ -132,7 +146,7 @@ function endQuiz() {
     isCorrect
 
 };
-
+// lets user set initials and saves score and initials to localstorage
 function saveScores() {
     let initials = document.getElementById("initials").value
     localStorage.setItem("initials", initials)
